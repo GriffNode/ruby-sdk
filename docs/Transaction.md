@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **transaction_id** | **String** |  |  |
 | **status** | [**TransactionStatus**](TransactionStatus.md) |  |  |
+| **exception** | [**TransactionException**](TransactionException.md) |  | [optional] |
 | **type** | **String** |  | [optional] |
 | **crypto** | [**CryptoSymbol**](CryptoSymbol.md) |  |  |
 | **deposit_address** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ require 'griffnode'
 instance = GriffNode::Transaction.new(
   transaction_id: null,
   status: null,
+  exception: null,
   type: null,
   crypto: null,
   deposit_address: null,

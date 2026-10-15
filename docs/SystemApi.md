@@ -86,7 +86,8 @@ pk = 'pk_example' # String | Publishable key, pk_live_… / pk_test_…
 amount = 'amount_example' # String | Fiat amount (≥ 1.00 USD equivalent).
 crypto = GriffNode::CryptoSymbol::BTC # CryptoSymbol | 
 opts = {
-  link: 'link_example' # String | Payment-link slug for attribution.
+  currency: 'USD', # String | Fiat currency of `amount`. Ignored when `link` is set: a payment link always uses its own amount and currency.
+  link: 'link_example' # String | Payment-link slug. The link's own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid).
 }
 
 begin
@@ -122,7 +123,8 @@ end
 | **pk** | **String** | Publishable key, pk_live_… / pk_test_… |  |
 | **amount** | **String** | Fiat amount (≥ 1.00 USD equivalent). |  |
 | **crypto** | [**CryptoSymbol**](.md) |  |  |
-| **link** | **String** | Payment-link slug for attribution. | [optional] |
+| **currency** | **String** | Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. | [optional][default to &#39;USD&#39;] |
+| **link** | **String** | Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). | [optional] |
 
 ### Return type
 
