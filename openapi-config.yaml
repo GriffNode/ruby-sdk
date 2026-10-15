@@ -1,0 +1,10 @@
+# Generator options. Kept here, not in --additional-properties: that flag splits on commas and the shell on spaces.
+gemName: griffnode
+moduleName: GriffNode
+gemVersion: 1.1.0
+gemHomepage: https://griffnode.com
+gemAuthor: GriffNode
+gemAuthorEmail: dev@griffnode.com
+gemSummary: GriffNode crypto payment gateway API client
+gemDescription: "Official GriffNode SDK. Non-custodial crypto payment gateway: accept BTC, ETH, LTC, DOGE, DASH and ERC-20 tokens straight to your own wallet."
+gemLicense: Apache-2.0
