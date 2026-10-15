@@ -80,7 +80,8 @@ module GriffNode
     # @param amount [String] Fiat amount (≥ 1.00 USD equivalent).
     # @param crypto [CryptoSymbol] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :link Payment-link slug for attribution.
+    # @option opts [String] :currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (default to 'USD')
+    # @option opts [String] :link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid).
     # @return [nil]
     def hosted_checkout_redirect(pk, amount, crypto, opts = {})
       hosted_checkout_redirect_with_http_info(pk, amount, crypto, opts)
@@ -93,7 +94,8 @@ module GriffNode
     # @param amount [String] Fiat amount (≥ 1.00 USD equivalent).
     # @param crypto [CryptoSymbol] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :link Payment-link slug for attribution.
+    # @option opts [String] :currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (default to 'USD')
+    # @option opts [String] :link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid).
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def hosted_checkout_redirect_with_http_info(pk, amount, crypto, opts = {})
       if @api_client.config.debugging
@@ -111,6 +113,10 @@ module GriffNode
       if @api_client.config.client_side_validation && crypto.nil?
         fail ArgumentError, "Missing the required parameter 'crypto' when calling SystemApi.hosted_checkout_redirect"
       end
+      allowable_values = ["USD", "PLN", "EUR", "GBP"]
+      if @api_client.config.client_side_validation && opts[:'currency'] && !allowable_values.include?(opts[:'currency'])
+        fail ArgumentError, "invalid value for \"currency\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/pay'
 
@@ -119,6 +125,7 @@ module GriffNode
       query_params[:'pk'] = pk
       query_params[:'amount'] = amount
       query_params[:'crypto'] = crypto
+      query_params[:'currency'] = opts[:'currency'] if !opts[:'currency'].nil?
       query_params[:'link'] = opts[:'link'] if !opts[:'link'].nil?
 
       # header parameters

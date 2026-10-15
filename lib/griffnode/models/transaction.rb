@@ -20,6 +20,8 @@ module GriffNode
 
     attr_accessor :status
 
+    attr_accessor :exception
+
     attr_accessor :type
 
     attr_accessor :crypto
@@ -96,6 +98,7 @@ module GriffNode
       {
         :'transaction_id' => :'transaction_id',
         :'status' => :'status',
+        :'exception' => :'exception',
         :'type' => :'type',
         :'crypto' => :'crypto',
         :'deposit_address' => :'deposit_address',
@@ -132,6 +135,7 @@ module GriffNode
       {
         :'transaction_id' => :'String',
         :'status' => :'TransactionStatus',
+        :'exception' => :'TransactionException',
         :'type' => :'String',
         :'crypto' => :'CryptoSymbol',
         :'deposit_address' => :'String',
@@ -194,6 +198,10 @@ module GriffNode
         self.status = attributes[:'status']
       else
         self.status = nil
+      end
+
+      if attributes.key?(:'exception')
+        self.exception = attributes[:'exception']
       end
 
       if attributes.key?(:'type')
@@ -381,6 +389,7 @@ module GriffNode
       self.class == o.class &&
           transaction_id == o.transaction_id &&
           status == o.status &&
+          exception == o.exception &&
           type == o.type &&
           crypto == o.crypto &&
           deposit_address == o.deposit_address &&
@@ -415,7 +424,7 @@ module GriffNode
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [transaction_id, status, type, crypto, deposit_address, amount_crypto, amount_fiat, amount_usd, amount_paid, amount_remaining, currency_fiat, fiat_to_usd_rate, exchange_rate, confirmations_required, payment_url, order_id, customer_email, items, payments, metadata, success_url, cancel_url, created_at, updated_at, expires_at].hash
+      [transaction_id, status, exception, type, crypto, deposit_address, amount_crypto, amount_fiat, amount_usd, amount_paid, amount_remaining, currency_fiat, fiat_to_usd_rate, exchange_rate, confirmations_required, payment_url, order_id, customer_email, items, payments, metadata, success_url, cancel_url, created_at, updated_at, expires_at].hash
     end
 
     # Builds the object from hash

@@ -8,6 +8,7 @@
 | **timestamp** | **Time** |  |  |
 | **transaction_id** | **String** |  |  |
 | **status** | [**TransactionStatus**](TransactionStatus.md) |  |  |
+| **exception** | [**TransactionException**](TransactionException.md) |  | [optional] |
 | **currency_crypto** | [**CryptoSymbol**](CryptoSymbol.md) |  | [optional] |
 | **currency_fiat** | [**FiatCurrency**](FiatCurrency.md) |  | [optional][default to &#39;USD&#39;] |
 | **amount_fiat** | **String** | Decimal string. | [optional] |
@@ -27,6 +28,7 @@ instance = GriffNode::WebhookPayload.new(
   timestamp: null,
   transaction_id: null,
   status: null,
+  exception: null,
   currency_crypto: null,
   currency_fiat: null,
   amount_fiat: null,

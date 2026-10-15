@@ -24,6 +24,8 @@ module GriffNode
 
     attr_accessor :status
 
+    attr_accessor :exception
+
     attr_accessor :currency_crypto
 
     attr_accessor :currency_fiat
@@ -74,6 +76,7 @@ module GriffNode
         :'timestamp' => :'timestamp',
         :'transaction_id' => :'transaction_id',
         :'status' => :'status',
+        :'exception' => :'exception',
         :'currency_crypto' => :'currency_crypto',
         :'currency_fiat' => :'currency_fiat',
         :'amount_fiat' => :'amount_fiat',
@@ -97,6 +100,7 @@ module GriffNode
         :'timestamp' => :'Time',
         :'transaction_id' => :'String',
         :'status' => :'TransactionStatus',
+        :'exception' => :'TransactionException',
         :'currency_crypto' => :'CryptoSymbol',
         :'currency_fiat' => :'FiatCurrency',
         :'amount_fiat' => :'String',
@@ -153,6 +157,10 @@ module GriffNode
         self.status = attributes[:'status']
       else
         self.status = nil
+      end
+
+      if attributes.key?(:'exception')
+        self.exception = attributes[:'exception']
       end
 
       if attributes.key?(:'currency_crypto')
@@ -221,7 +229,7 @@ module GriffNode
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @event.nil?
-      event_validator = EnumAttributeValidator.new('String', ["payment.created", "payment.pending", "payment.completed", "payment.overpaid", "payment.partial", "payment.expired", "payment.failed"])
+      event_validator = EnumAttributeValidator.new('String', ["payment.created", "payment.pending", "payment.completed", "payment.overpaid", "payment.partial", "payment.expired", "payment.failed", "payment.paid_late", "payment.needs_review"])
       return false unless event_validator.valid?(@event)
       return false if @timestamp.nil?
       return false if @transaction_id.nil?
@@ -232,7 +240,7 @@ module GriffNode
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event Object to be assigned
     def event=(event)
-      validator = EnumAttributeValidator.new('String', ["payment.created", "payment.pending", "payment.completed", "payment.overpaid", "payment.partial", "payment.expired", "payment.failed"])
+      validator = EnumAttributeValidator.new('String', ["payment.created", "payment.pending", "payment.completed", "payment.overpaid", "payment.partial", "payment.expired", "payment.failed", "payment.paid_late", "payment.needs_review"])
       unless validator.valid?(event)
         fail ArgumentError, "invalid value for \"event\", must be one of #{validator.allowable_values}."
       end
@@ -248,6 +256,7 @@ module GriffNode
           timestamp == o.timestamp &&
           transaction_id == o.transaction_id &&
           status == o.status &&
+          exception == o.exception &&
           currency_crypto == o.currency_crypto &&
           currency_fiat == o.currency_fiat &&
           amount_fiat == o.amount_fiat &&
@@ -267,7 +276,7 @@ module GriffNode
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, timestamp, transaction_id, status, currency_crypto, currency_fiat, amount_fiat, amount_usd, amount_crypto, order_id, receipt_url, metadata].hash
+      [event, timestamp, transaction_id, status, exception, currency_crypto, currency_fiat, amount_fiat, amount_usd, amount_crypto, order_id, receipt_url, metadata].hash
     end
 
     # Builds the object from hash
