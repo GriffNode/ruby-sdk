@@ -5,3 +5,4 @@ LICENSE
 openapi.yaml
 openapitools.json
 .openapi-generator-ignore
+griffnode.gemspec

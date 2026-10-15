@@ -3,7 +3,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['openapi.yaml', 'openapitools.json', '.github/workflows/generate.yml']
+    paths: ['openapi.yaml', 'openapi-config.yaml', 'openapitools.json', '.github/workflows/generate.yml']
 permissions:
   contents: write
 jobs:
@@ -17,7 +17,7 @@ jobs:
             openapitools/openapi-generator-cli:v7.10.0 \
             generate -i /local/openapi.yaml -g ruby -o /local \
             --skip-validate-spec \
-            --additional-properties=gemName=griffnode,moduleName=GriffNode,gemVersion=1.0.0,gemHomepage=https://griffnode.com,gemAuthor=GriffNode,gemAuthorEmail=dev@griffnode.com,gemSummary=GriffNode crypto payment gateway API client,gemDescription=Official GriffNode SDK. Non-custodial crypto payment gateway: accept BTC, ETH, LTC, DOGE, DASH and ERC-20 tokens straight to your own wallet.,gemLicense=Apache-2.0
+            -c /local/openapi-config.yaml
       - name: Commit regenerated SDK
         run: |
           git config user.name  "github-actions[bot]"
