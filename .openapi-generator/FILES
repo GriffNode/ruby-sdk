@@ -106,6 +106,4 @@ lib/griffnode/models/transaction_exception.rb
 lib/griffnode/models/transaction_status.rb
 lib/griffnode/models/webhook_payload.rb
 lib/griffnode/version.rb
-spec/models/recurring_webhook_payload_spec.rb
-spec/models/transaction_exception_spec.rb
 spec/spec_helper.rb
