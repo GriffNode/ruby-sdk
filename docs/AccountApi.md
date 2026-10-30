@@ -6,7 +6,7 @@ All URIs are relative to *https://api.griffnode.com/v1*
 | ------ | ------------ | ----------- |
 | [**get_account**](AccountApi.md#get_account) | **GET** /account | Merchant plan, usage and limits |
 | [**get_stats**](AccountApi.md#get_stats) | **GET** /stats | Merchant transaction analytics |
-| [**list_balances**](AccountApi.md#list_balances) | **GET** /balances | On-platform balances (for overage/top-up; NOT crypto settlement) |
+| [**list_balances**](AccountApi.md#list_balances) | **GET** /balances | Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet. |
 | [**list_invoices**](AccountApi.md#list_invoices) | **GET** /invoices | GriffNode billing invoices (platform ↔ merchant) |
 | [**list_plans**](AccountApi.md#list_plans) | **GET** /plans | Plan catalogue and pricing |
 
@@ -143,7 +143,7 @@ This endpoint does not need any parameter.
 
 > <ListBalances200Response> list_balances
 
-On-platform balances (for overage/top-up; NOT crypto settlement)
+Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
 
 ### Examples
 
@@ -159,7 +159,7 @@ end
 api_instance = GriffNode::AccountApi.new
 
 begin
-  # On-platform balances (for overage/top-up; NOT crypto settlement)
+  # Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
   result = api_instance.list_balances
   p result
 rescue GriffNode::ApiError => e
@@ -175,7 +175,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # On-platform balances (for overage/top-up; NOT crypto settlement)
+  # Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
   data, status_code, headers = api_instance.list_balances_with_http_info
   p status_code # => 2xx
   p headers # => { ... }

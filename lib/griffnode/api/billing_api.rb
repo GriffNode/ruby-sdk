@@ -19,7 +19,7 @@ module GriffNode
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Start a plan upgrade or account top-up
+    # Start a plan upgrade
     # @param create_billing_checkout_request [CreateBillingCheckoutRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TransactionEnvelope]
@@ -28,7 +28,7 @@ module GriffNode
       data
     end
 
-    # Start a plan upgrade or account top-up
+    # Start a plan upgrade
     # @param create_billing_checkout_request [CreateBillingCheckoutRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TransactionEnvelope, Integer, Hash)>] TransactionEnvelope data, response status code and response headers

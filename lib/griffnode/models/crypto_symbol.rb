@@ -25,15 +25,15 @@ module GriffNode
     EURC = "EURC".freeze
     DAI = "DAI".freeze
     WBTC = "WBTC".freeze
+    WETH = "WETH".freeze
     SHIB = "SHIB".freeze
     PEPE = "PEPE".freeze
     LINK = "LINK".freeze
     UNI = "UNI".freeze
-    AAVE = "AAVE".freeze
-    MKR = "MKR".freeze
+    LEO = "LEO".freeze
 
     def self.all_vars
-      @all_vars ||= [BTC, LTC, DOGE, DASH, ETH, USDT, USDC, EURC, DAI, WBTC, SHIB, PEPE, LINK, UNI, AAVE, MKR].freeze
+      @all_vars ||= [BTC, LTC, DOGE, DASH, ETH, USDT, USDC, EURC, DAI, WBTC, WETH, SHIB, PEPE, LINK, UNI, LEO].freeze
     end
 
     # Builds the enum from string

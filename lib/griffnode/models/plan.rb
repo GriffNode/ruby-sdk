@@ -23,6 +23,7 @@ module GriffNode
 
     attr_accessor :monthly_transaction_limit
 
+    # Always 0. Plans have a hard monthly limit and no overage.
     attr_accessor :overage_cost_per_tx
 
     attr_accessor :webhook_support

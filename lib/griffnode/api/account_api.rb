@@ -129,7 +129,7 @@ module GriffNode
       return data, status_code, headers
     end
 
-    # On-platform balances (for overage/top-up; NOT crypto settlement)
+    # Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
     # @param [Hash] opts the optional parameters
     # @return [ListBalances200Response]
     def list_balances(opts = {})
@@ -137,7 +137,7 @@ module GriffNode
       data
     end
 
-    # On-platform balances (for overage/top-up; NOT crypto settlement)
+    # Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListBalances200Response, Integer, Hash)>] ListBalances200Response data, response status code and response headers
     def list_balances_with_http_info(opts = {})

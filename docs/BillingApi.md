@@ -4,14 +4,14 @@ All URIs are relative to *https://api.griffnode.com/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_billing_checkout**](BillingApi.md#create_billing_checkout) | **POST** /billing/checkout | Start a plan upgrade or account top-up |
+| [**create_billing_checkout**](BillingApi.md#create_billing_checkout) | **POST** /billing/checkout | Start a plan upgrade |
 
 
 ## create_billing_checkout
 
 > <TransactionEnvelope> create_billing_checkout(create_billing_checkout_request)
 
-Start a plan upgrade or account top-up
+Start a plan upgrade
 
 ### Examples
 
@@ -28,7 +28,7 @@ api_instance = GriffNode::BillingApi.new
 create_billing_checkout_request = GriffNode::CreateBillingCheckoutRequest.new({tier: GriffNode::PlanTier::STARTER}) # CreateBillingCheckoutRequest | 
 
 begin
-  # Start a plan upgrade or account top-up
+  # Start a plan upgrade
   result = api_instance.create_billing_checkout(create_billing_checkout_request)
   p result
 rescue GriffNode::ApiError => e
@@ -44,7 +44,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Start a plan upgrade or account top-up
+  # Start a plan upgrade
   data, status_code, headers = api_instance.create_billing_checkout_with_http_info(create_billing_checkout_request)
   p status_code # => 2xx
   p headers # => { ... }

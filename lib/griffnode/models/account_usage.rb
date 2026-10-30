@@ -20,6 +20,7 @@ module GriffNode
     # null = unlimited.
     attr_accessor :monthly_transaction_limit
 
+    # Always 0. Plans have a hard monthly limit and no overage.
     attr_accessor :overage_cost_per_tx
 
     # Attribute mapping from ruby-style variable name to JSON key.

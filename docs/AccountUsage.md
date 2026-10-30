@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **monthly_transactions_used** | **Integer** |  | [optional] |
 | **monthly_transaction_limit** | **Integer** | null &#x3D; unlimited. | [optional] |
-| **overage_cost_per_tx** | **Float** |  | [optional] |
+| **overage_cost_per_tx** | **Float** | Always 0. Plans have a hard monthly limit and no overage. | [optional] |
 
 ## Example
 
